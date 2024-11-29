@@ -1,0 +1,13 @@
+# описание таймера 
+[Unit]
+Description=Run Monitoring Test Script Every Minute
+
+# запуск раз в минуту. Явное указание запуска сервиса, можно и без этой строки если юниты имеют одинаковое название 
+[Timer]
+OnCalendar=*:0/1
+Unit=monitoring_test.service
+
+# запуск с планировщиком systemd
+[Install]
+WantedBy=timers.target
+

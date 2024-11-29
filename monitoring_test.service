@@ -1,0 +1,14 @@
+# Описание и запуск после сети
+[Unit]
+Description=Monitoring Test Process
+After=network.target
+
+#  Запуск один раз + путь до файла
+[Service]
+Type=oneshot
+ExecStart=mon_script.sh
+
+# старт после загрузки основныз служб (runlevel 3)
+[Install]
+WantedBy=multi-user.target
+
