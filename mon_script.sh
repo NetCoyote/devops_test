@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 # Основные переменныео
 PROCESS_NAME="test"
 LOG_FILE="/var/log/monitoring_test.log"
@@ -11,6 +12,7 @@ CURRENT_PID=$(pgrep -x "$PROCESS_NAME")
 if [ -z "$CURRENT_PID" ]; then
     exit 0
 fi
+
 
 # проверка перезапуска и первого запуска
 if [ -f "$PID_FILE" ]; then
@@ -32,3 +34,5 @@ POST_DATA="Процесс работает. PID: $CURRENT_PID"
 if ! curl -s -o /dev/null -X POST -d "$POST_DATA" "$MONITOR_URL"; then
     echo "$(date '+%Y-%m-%d %H:%M:%S') - Сервер мониторинга $MONITOR_URL недоступен." >> "$LOG_FILE"
 fi
+
+
